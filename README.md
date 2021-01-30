@@ -4,7 +4,7 @@
 
 <ul>
 	<li>$this_is_a_variable</li>
-	<li>$THIS_IS_A_CONSTANT</li>
+	<li>THIS_IS_A_CONSTANT</li>
 	<li>thisIsAMethod</li>
 	<li>ThisIsAClass</li>
 </ul>
