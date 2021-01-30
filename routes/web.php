@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/external-api', 'App\Http\Controllers\ExternalApiWebController@getIndex');
+
+Route::get('/relational-database', 'App\Http\Controllers\RelationalDatabaseWebController@getIndex');
