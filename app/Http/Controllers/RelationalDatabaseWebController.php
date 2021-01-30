@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Classes\Builders\JsonHierarchyBuilder;
 
-use App\Comment;
-use App\Post;
-use App\User;
+use App\Models\Comment;
+use App\Models\Post;
+use App\Models\User;
 
 class RelationalDatabaseWebController extends Controller
 {
@@ -19,7 +19,7 @@ class RelationalDatabaseWebController extends Controller
 		$users = User::all();
 		$posts = Post::all();
 		$comments = Comment::all();
-
+dd($comments);
 		$nested_posts = $json_builder->nestRelation([
 			'parents' => $posts,
 			'children' => $comments,
