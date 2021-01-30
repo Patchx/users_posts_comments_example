@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
+use Artisan;
+
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
@@ -19,6 +21,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Artisan::call('migrate:refresh');
         $this->populateUsers();
         $this->populatePosts();
         $this->populateComments();
@@ -36,6 +39,7 @@ class DatabaseSeeder extends Seeder
 
     	foreach ($comments as $comment) {
     		Comment::create([
+                'id' => $comment->id,
     			'postId' => $comment->postId,
     			'name' => $comment->name,
     			'email' => $comment->email,
@@ -52,6 +56,7 @@ class DatabaseSeeder extends Seeder
 
     	foreach ($posts as $post) {
     		Post::create([
+                'id' => $post->id,
     			'userId' => $post->userId,
     			'title' => $post->title,
     			'body' => $post->body,
@@ -67,6 +72,7 @@ class DatabaseSeeder extends Seeder
 
     	foreach ($users as $user) {
     		User::create([
+                'id' => $user->id,
     			'name' => $user->name,
     			'username' => $user->username,
     			'email' => $user->email,

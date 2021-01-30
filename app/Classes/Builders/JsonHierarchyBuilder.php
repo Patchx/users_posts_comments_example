@@ -2,6 +2,8 @@
 
 namespace App\Classes\Builders;
 
+use Illuminate\Database\Eloquent\Model;
+
 class JsonHierarchyBuilder
 {
 	public function nestRelation($inputs)
@@ -20,10 +22,12 @@ class JsonHierarchyBuilder
 
 		for ($i1 = 0; $i1 < $parents_count; $i1++) {
 		    $parent = clone $parents[$i1];
+		    $parent = $this->convertModelToSimpleObject($parent);
 
 		    for ($i2 = 0; $i2 < $children_count; $i2++) {
 		        $child = clone $children[$i2];
-		        
+		        $child = $this->convertModelToSimpleObject($child);
+
 		        if ($child->$nest_child_on === $parent->$nest_parent_on) {
 		        	$parent->$child_label[] = $child;
 		        }
@@ -38,6 +42,15 @@ class JsonHierarchyBuilder
 	// -------------------
 	// - Private Methods -
 	// -------------------
+
+	private function convertModelToSimpleObject($input)
+	{
+		if (!$input instanceof Model) {
+			return $input;
+		}
+
+		return json_decode($input->toJson());
+	}
 
 	private function validateInputs($inputs)
 	{
