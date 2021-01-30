@@ -55,6 +55,13 @@
                     <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
                         Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                     </div>
+
+                    <div class="ml-4 text-right text-sm text-gray-500 sm:text-right sm:ml-0">
+                        <a 
+                            href="https://github.com/Patchx/users_posts_comments_example"
+                            target="_blank"
+                        >Github</a>
+                    </div>
                 </div>
             </div>
         </div>
