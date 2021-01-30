@@ -17,9 +17,14 @@ class RelationalDatabaseWebController extends Controller
 		Request $request
 	) {
 		$users = User::all();
+
+		if ($users->count() < 1) {
+			dd('No users to display');
+		}
+
 		$posts = Post::all();
 		$comments = Comment::all();
-dd($comments);
+
 		$nested_posts = $json_builder->nestRelation([
 			'parents' => $posts,
 			'children' => $comments,
